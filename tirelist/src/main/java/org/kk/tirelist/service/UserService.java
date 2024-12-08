@@ -1,36 +1,17 @@
 package org.kk.tirelist.service;
-
-import org.kk.tirelist.dao.UserDao;
-import org.kk.tirelist.model.UserModel;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+import org.kk.tirelist.dto.CreateUserDto;
+import org.kk.tirelist.dto.UserDto;
 
 import java.util.List;
-import java.util.Optional;
 
-@Service
-public class UserService {
-    private final UserDao userDao;
-
-    @Autowired
-    public UserService(@Qualifier("postgres") UserDao userDao) {
-        this.userDao = userDao;
-    }
-    public int createUser(UserModel user) {
-        return userDao.createUser(user);
-    }
-    public List<UserModel> getAllUsers() {
-        return userDao.getAllUsers();
-    }
-    public Optional<UserModel> getUserById(int id) {
-        return userDao.getUserById(id);
-    }
-    public int deleteUser(int id) {
-        return userDao.deleteUser(id);
-    }
-    public int updateUser(int id, UserModel newUser) {
-        return userDao.updateUser(id, newUser);
-    }
-
+public interface UserService {
+    UserDto createUser(CreateUserDto userDto);
+    UserDto getUserById(Long userId);
+    List<UserDto> getAllUsers();
+    UserDto updateUser(Long userId, UserDto updateUserDto);
+    void deleteUser(Long userId);
+    void deactivateUser(Long userId);
+    void suspendUser(Long userId);
+    void reactivateUser(Long userId);
+    List<UserDto> findByUserAccountStatus(int accountStatus);
 }
