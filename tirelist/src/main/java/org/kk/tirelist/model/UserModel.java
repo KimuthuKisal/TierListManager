@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name="users")
@@ -42,10 +43,15 @@ public class UserModel {
     private String workingStatus;
     @Column(name="user_account_status")
     private int userAccountStatus;    // Active=1, Inactive=0, Deleted=-1, Suspended=-2 etc...
-    @Column(name="created_on")
+    @Column(name="created_on", nullable=false)
     private LocalDateTime createdOn;
     @Column(name="deleted_on")
     private LocalDateTime deletedOn;
+    @NotBlank
+    @Column(name="password", nullable=false)
+    private String password;
+    @Column(name="role")
+    private String role;
 
     // Constructor
     public UserModel(
@@ -59,9 +65,10 @@ public class UserModel {
         @JsonProperty("address") String address,
         @JsonProperty("profileImage") String profileImage,
         @JsonProperty("workingStatus") String workingStatus,
-        @JsonProperty("userAccountStatus") int userAccountStatus,
-        @JsonProperty("createdOn") @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime createdOn,
-        @JsonProperty("deletedOn") @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime deletedOn
+        int userAccountStatus,
+        LocalDateTime createdOn,
+        LocalDateTime deletedOn,
+        @JsonProperty("password") String password
     ) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -76,6 +83,7 @@ public class UserModel {
         this.userAccountStatus = userAccountStatus;
         this.createdOn = createdOn;
         this.deletedOn = deletedOn;
+        this.password = password;
     }
 
     public UserModel() {
@@ -96,20 +104,24 @@ public class UserModel {
     public int getUserAccountStatus() { return userAccountStatus; }
     public LocalDateTime getCreatedOn() { return createdOn; }
     public LocalDateTime getDeletedOn() { return deletedOn; }
+    public String getPassword() { return password; }
+    public String getRole() { return role; }
 
     // // Setters
     // public Long setId(Long id) { this.id = id; }
-     public void setFirstName(String firstName) { this.firstName = firstName; }
-     public void setLastName(String lastName) { this.lastName = lastName; }
-     public void setUserName(String userName) { this.userName = userName; }
-     public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
-     public void setNic(String nic) { this.nic = nic; }
-     public void setDob(LocalDate dob) { this.dob = dob; }
-     public void setContactNumber(String contactNumber) { this.contactNumber = contactNumber; }
-     public void setAddress(String address) { this.address = address; }
-     public void setProfileImage(String profileImage) { this.profileImage = profileImage; }
-     public void setWorkingStatus(String workingStatus) { this.workingStatus = workingStatus; }
-     public void setUserAccountStatus(int userAccountStatus) { this.userAccountStatus = userAccountStatus; }
-     public void setCreatedOn(LocalDateTime createdOn) { this.createdOn = createdOn; }
-     public void setDeletedOn(LocalDateTime deletedOn) { this.deletedOn = deletedOn; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
+    public void setUserName(String userName) { this.userName = userName; }
+    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
+    public void setNic(String nic) { this.nic = nic; }
+    public void setDob(LocalDate dob) { this.dob = dob; }
+    public void setContactNumber(String contactNumber) { this.contactNumber = contactNumber; }
+    public void setAddress(String address) { this.address = address; }
+    public void setProfileImage(String profileImage) { this.profileImage = profileImage; }
+    public void setWorkingStatus(String workingStatus) { this.workingStatus = workingStatus; }
+    public void setUserAccountStatus(int userAccountStatus) { this.userAccountStatus = userAccountStatus; }
+    public void setCreatedOn(LocalDateTime createdOn) { this.createdOn = createdOn; }
+    public void setDeletedOn(LocalDateTime deletedOn) { this.deletedOn = deletedOn; }
+    public void setPassword(String password) { this.password = password; }
+    public void setRole(String role) { this.role = role; }
 }

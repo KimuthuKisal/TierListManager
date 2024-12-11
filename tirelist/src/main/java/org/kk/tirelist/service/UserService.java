@@ -1,6 +1,8 @@
 package org.kk.tirelist.service;
 import org.kk.tirelist.dto.CreateUserDto;
 import org.kk.tirelist.dto.UserDto;
+import org.kk.tirelist.model.UserModel;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
 
@@ -14,4 +16,6 @@ public interface UserService {
     void suspendUser(Long userId);
     void reactivateUser(Long userId);
     List<UserDto> findByUserAccountStatus(int accountStatus);
+    public UserDetails findByUserName(String userName);
+    public UserDetails findByUserEmail(String userEmail);
 }

@@ -59,7 +59,8 @@ public class UserMapper {
             createUserDto.getWorkingStatus(),
             UserAccountStatus.ACTIVE.ordinal(),
             LocalDateTime.now(),
-            null
+            null,
+            createUserDto.getPassword()
         );
     }
 

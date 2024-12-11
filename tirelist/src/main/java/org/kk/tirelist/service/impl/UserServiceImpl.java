@@ -7,6 +7,10 @@ import org.kk.tirelist.mapper.UserMapper;
 import org.kk.tirelist.model.UserModel;
 import org.kk.tirelist.repository.UserRepository;
 import org.kk.tirelist.service.UserService;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -14,10 +18,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
     private UserRepository userRepository;
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        UserModel user = userRepository.findByUserName(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        }
+        return User.withUsername(user.getUserName()).password(user.getPassword()).roles(user.getRole()).build();
     }
 
     public enum UserAccountStatus {
@@ -102,5 +115,26 @@ public class UserServiceImpl implements UserService {
         List<UserModel> users = userRepository.findByUserAccountStatus(accountStatus);
         return users.stream().map(UserMapper::mapUserToUserDto).collect(Collectors.toList());
     }
+
+    @Override
+    public UserDetails findByUserName(String userName) throws UsernameNotFoundException {
+        UserModel currUser = userRepository.findByUserName(userName);
+        if (currUser != null) {
+            var springUser = User.withUsername(currUser.getUserName()).password(currUser.getPassword()).roles(currUser.getRole()).build();
+            return springUser;
+        }
+        return null;
+    }
+
+    @Override
+    public UserDetails findByUserEmail(String userEmail) {
+        UserModel currUser = userRepository.findByUserEmail(userEmail);
+        if (currUser != null) {
+            var springUser = User.withUsername(currUser.getUserName()).password(currUser.getPassword()).roles(currUser.getRole()).build();
+            return springUser;
+        }
+        return null;
+    }
+
 
 }
