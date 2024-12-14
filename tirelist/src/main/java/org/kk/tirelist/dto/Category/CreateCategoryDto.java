@@ -1,9 +1,9 @@
 package org.kk.tirelist.dto.Category;
 
-public class CreatecategoryDto {
+public class CreateCategoryDto {
     private String categoryName;
     private boolean activeFlag;
-    public CreatecategoryDto(String categoryName, boolean activeFlag) {
+    public CreateCategoryDto(String categoryName, boolean activeFlag) {
         this.categoryName = categoryName;
         this.activeFlag = activeFlag;
     }

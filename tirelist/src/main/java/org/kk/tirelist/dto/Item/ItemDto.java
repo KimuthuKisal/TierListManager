@@ -1,50 +1,18 @@
-package org.kk.tirelist.model;
+package org.kk.tirelist.dto.Item;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import jakarta.persistence.*;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
 import net.minidev.json.JSONArray;
 
-@Entity
-@Table(name = "items")
-public class ItemModel {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ItemDto {
     private Long id;
-    @NotBlank
-    @Column(name = "item_name")
     private String itemName;
-    @NotBlank
-    @Column(name = "description")
     private String description;
-    @NotBlank
-    @Column(name = "image")
     private String image;
-    @NotBlank
-    @Column(name = "category")
-    private Long category;  // 0-Character, 1-Weapon etc..
-    @Column(name = "tier_id")
+    private Long category;
     private String tireId;
-    @Column(name = "meta_data")
     private JSONArray metaData;
-    @Column(name = "is_active")
     private boolean isActive;
 
-    public ItemModel() {
-    }
-
-    public ItemModel(
-        @JsonProperty("itemName") String itemName, 
-        @JsonProperty("description") String description, 
-        @JsonProperty("image") String image, 
-        @JsonProperty("category") Long category, 
-        @JsonProperty("tireId") String tireId, 
-        @JsonProperty("metaData") JSONArray metaData,
-        @JsonProperty("isActive") boolean isActive
-    ) {
+    public ItemDto(Long id, String itemName, String description, String image, Long category, String tireId, JSONArray metaData, boolean isActive) {
         this.itemName = itemName;
         this.description = description;
         this.image = image;
@@ -62,7 +30,7 @@ public class ItemModel {
     public String getTireId() { return tireId; }
     public JSONArray getMetaData() { return metaData; }
     public boolean getIsActive() { return isActive; }
-    
+
     public void setId(Long id) { this.id = id; }
     public void setItemName(String itemName) { this.itemName = itemName; }
     public void setDescription(String description) { this.description = description; }
@@ -71,6 +39,4 @@ public class ItemModel {
     public void setTireId(String tireId) { this.tireId = tireId; }
     public void setMetaData(JSONArray metaData) { this.metaData = metaData; }
     public void setIsActive(boolean isActive) { this.isActive = isActive; }
-
-
 }
