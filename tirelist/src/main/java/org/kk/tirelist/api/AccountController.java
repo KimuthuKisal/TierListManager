@@ -54,6 +54,7 @@ public class AccountController {
         SUSPENDED
     }
 
+    // Get Current User Profile
     @GetMapping("profile")
     public ResponseEntity<Object> profile(Authentication authentication) {
         var response = new HashMap<String, Object>();
@@ -105,7 +106,6 @@ public class AccountController {
             }
             userRepository.save(user);
 
-//            return ResponseEntity.ok("User added");
             String jwtToken = createJwtToken(user);
             var response = new HashMap<String, Object>();
             response.put("token", jwtToken);

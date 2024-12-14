@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -52,6 +53,8 @@ public class UserModel {
     private String password;
     @Column(name="role")
     private String role;
+    @Column(name = "tire_list")
+    private List<Long> tireList;
 
     // Constructor
     public UserModel(
@@ -106,6 +109,7 @@ public class UserModel {
     public LocalDateTime getDeletedOn() { return deletedOn; }
     public String getPassword() { return password; }
     public String getRole() { return role; }
+    public List<Long> getTireList() { return tireList; }
 
     // // Setters
     // public Long setId(Long id) { this.id = id; }
@@ -124,4 +128,19 @@ public class UserModel {
     public void setDeletedOn(LocalDateTime deletedOn) { this.deletedOn = deletedOn; }
     public void setPassword(String password) { this.password = password; }
     public void setRole(String role) { this.role = role; }
+    public void setTireList(List<Long> tireList) { this.tireList = tireList; }
+
+    // Add Tire to Tire list
+    public void addItem(Long item) {
+        if (!this.tireList.contains(item)) {
+            this.tireList.add(item);
+        }
+    }
+
+    // Remove Tire from Tire list
+    public void removeItem(Long item) {
+        if (this.tireList != null) {
+            this.tireList.remove(item);
+        }
+    }
 }
