@@ -47,12 +47,12 @@ public class CategoryController {
         CategoryDto categoryDto = categoryService.updateCategory(cid, updatedCategoryDto);
         return ResponseEntity.ok(categoryDto);
     }
-    @PutMapping("{cid}/activate")
+    @PutMapping("activate/{cid}")
     public ResponseEntity<String> activateCategory(@PathVariable("cid") Long cid) {
         categoryService.ReActiveCategory(cid);
         return ResponseEntity.ok("Category Reactivated");
     }
-    @PutMapping("{cid}/deactivate")
+    @PutMapping("deactivate/{cid}")
     public ResponseEntity<String> deactivateCategory(@PathVariable("cid") Long cid) {
         // TODO: Check whether the category has been referenced for items
         categoryService.DeleteCategory(cid);
