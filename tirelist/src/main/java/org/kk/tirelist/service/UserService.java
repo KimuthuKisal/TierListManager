@@ -1,7 +1,6 @@
 package org.kk.tirelist.service;
-import org.kk.tirelist.dto.CreateUserDto;
-import org.kk.tirelist.dto.UserDto;
-import org.kk.tirelist.model.UserModel;
+import org.kk.tirelist.dto.UserModel.CreateUserDto;
+import org.kk.tirelist.dto.UserModel.UserDto;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;

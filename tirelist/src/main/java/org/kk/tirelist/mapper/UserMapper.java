@@ -1,7 +1,7 @@
 package org.kk.tirelist.mapper;
 
-import org.kk.tirelist.dto.CreateUserDto;
-import org.kk.tirelist.dto.UserDto;
+import org.kk.tirelist.dto.UserModel.CreateUserDto;
+import org.kk.tirelist.dto.UserModel.UserDto;
 import org.kk.tirelist.model.UserModel;
 
 import java.time.LocalDateTime;

@@ -2,11 +2,10 @@ package org.kk.tirelist.api;
 
 import com.nimbusds.jose.jwk.source.ImmutableSecret;
 import jakarta.validation.Valid;
-import org.kk.tirelist.dto.CreateUserDto;
-import org.kk.tirelist.dto.LoginDto;
+import org.kk.tirelist.dto.UserModel.CreateUserDto;
+import org.kk.tirelist.dto.UserModel.LoginDto;
 import org.kk.tirelist.model.UserModel;
 import org.kk.tirelist.repository.UserRepository;
-import org.kk.tirelist.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +23,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 

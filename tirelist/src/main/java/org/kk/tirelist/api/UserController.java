@@ -1,11 +1,7 @@
 package org.kk.tirelist.api;
 
-import org.apache.catalina.User;
-import org.apache.coyote.Response;
-import org.kk.tirelist.dto.CreateUserDto;
-import org.kk.tirelist.dto.UserDto;
-import org.kk.tirelist.model.UserModel;
-import org.kk.tirelist.repository.UserRepository;
+import org.kk.tirelist.dto.UserModel.CreateUserDto;
+import org.kk.tirelist.dto.UserModel.UserDto;
 import org.kk.tirelist.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -77,7 +73,7 @@ public class UserController {
         userService.deleteUser(uid);
         return ResponseEntity.ok("User Account deleted successfully");
     }
-    @PutMapping("deactive/{uid}")
+    @PutMapping("deactivate/{uid}")
     public ResponseEntity<String> deactivateUser(@PathVariable("uid") Long uid) {
         userService.deactivateUser(uid);
         return ResponseEntity.ok("User Account deactivated successfully");

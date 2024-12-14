@@ -14,17 +14,26 @@ public class CategoryModel {
     @NotBlank
     @Column(name = "category_name")
     private String categoryName;
+    @Column(name = "active_flag")
+    private boolean activeFlag;
 
     public CategoryModel() {
     }
 
-    public CategoryModel(@JsonProperty("categoryName") String categoryName) {
+    public CategoryModel(
+        @JsonProperty("categoryName") String categoryName,
+        @JsonProperty("categoryName") boolean activeFlag
+    ) {
         this.categoryName = categoryName;
+        this.activeFlag = activeFlag;
     }
 
     public Long getId() { return id; }
     public String getCategoryName() { return categoryName; }
-    
+
+    public boolean getActiveFlag() { return activeFlag; }
+
     public void setId(Long id) { this.id = id; }
     public void setCategoryName(String categoryName) { this.categoryName = categoryName; }
+    public void setActiveFlag(boolean activeFlag) { this.activeFlag = activeFlag; }
 }

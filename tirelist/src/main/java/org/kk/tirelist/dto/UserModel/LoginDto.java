@@ -1,4 +1,4 @@
-package org.kk.tirelist.dto;
+package org.kk.tirelist.dto.UserModel;
 import jakarta.validation.constraints.NotBlank;
 
 public class LoginDto {

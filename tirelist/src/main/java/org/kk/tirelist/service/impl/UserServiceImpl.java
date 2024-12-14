@@ -1,7 +1,7 @@
 package org.kk.tirelist.service.impl;
 
-import org.kk.tirelist.dto.CreateUserDto;
-import org.kk.tirelist.dto.UserDto;
+import org.kk.tirelist.dto.UserModel.CreateUserDto;
+import org.kk.tirelist.dto.UserModel.UserDto;
 import org.kk.tirelist.exception.ResourceNotFoundException;
 import org.kk.tirelist.mapper.UserMapper;
 import org.kk.tirelist.model.UserModel;
@@ -55,12 +55,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public List<UserDto> getAllUsers() {
         List<UserModel> users = userRepository.findAll();
-        return users.stream().map( (user) -> UserMapper.mapUserToUserDto(user)).collect(Collectors.toList());
+        return users.stream().map(UserMapper::mapUserToUserDto).collect(Collectors.toList());
     }
 
     @Override
     public UserDto updateUser(Long userId, UserDto updateUserDto) {
-        UserModel user = userRepository.findById((userId)).orElseThrow( ()-> new ResourceNotFoundException("User not found with given id " + userId));
+        UserModel user = userRepository.findById(userId).orElseThrow( ()-> new ResourceNotFoundException("User not found with given id " + userId));
         user.setFirstName(updateUserDto.getFirstName());
         user.setLastName(updateUserDto.getLastName());
         user.setUserName(updateUserDto.getUserName());
