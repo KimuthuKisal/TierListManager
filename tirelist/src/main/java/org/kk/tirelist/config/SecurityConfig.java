@@ -2,6 +2,7 @@ package org.kk.tirelist.config;
 
 import org.kk.tirelist.service.UserService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -34,17 +35,41 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("api/v1/user").permitAll()
-                    .requestMatchers("api/v1/user/register").permitAll()
-                    .requestMatchers("api/v1/user/login").permitAll()
-                    .requestMatchers("api/v1/category").permitAll()
-                    .requestMatchers("api/v1/category/*").permitAll()
-                    .requestMatchers("api/v1/category/**").permitAll()
-                    .requestMatchers("api/v1/item").permitAll()
-                    .requestMatchers("api/v1/item/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/user").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/v1/user").permitAll()
+                    .requestMatchers(HttpMethod.PUT, "/api/v1/user").permitAll()
+                    .requestMatchers(HttpMethod.DELETE, "/api/v1/user").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/user/register").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/v1/user/register").permitAll()
+                    .requestMatchers(HttpMethod.PUT, "/api/v1/user/register").permitAll()
+                    .requestMatchers(HttpMethod.DELETE, "/api/v1/user/register").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/user/login").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/v1/user/login").permitAll()
+                    .requestMatchers(HttpMethod.PUT, "/api/v1/user/login").permitAll()
+                    .requestMatchers(HttpMethod.DELETE, "/api/v1/user/login").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/category").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/v1/category").permitAll()
+                    .requestMatchers(HttpMethod.PUT, "/api/v1/category").permitAll()
+                    .requestMatchers(HttpMethod.DELETE, "/api/v1/category").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/category/*").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/v1/category/*").permitAll()
+                    .requestMatchers(HttpMethod.PUT, "/api/v1/category/*").permitAll()
+                    .requestMatchers(HttpMethod.DELETE, "/api/v1/category/*").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/category/**").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/v1/category/**").permitAll()
+                    .requestMatchers(HttpMethod.PUT, "/api/v1/category/**").permitAll()
+                    .requestMatchers(HttpMethod.DELETE, "/api/v1/category/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/item").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/v1/item").permitAll()
+                    .requestMatchers(HttpMethod.PUT, "/api/v1/item").permitAll()
+                    .requestMatchers(HttpMethod.DELETE, "/api/v1/item").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/item/**").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/v1/item/**").permitAll()
+                    .requestMatchers(HttpMethod.PUT, "/api/v1/item/**").permitAll()
+                    .requestMatchers(HttpMethod.DELETE, "/api/v1/item/**").permitAll()
                     .anyRequest().authenticated()
                 )
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
+//                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();
     }

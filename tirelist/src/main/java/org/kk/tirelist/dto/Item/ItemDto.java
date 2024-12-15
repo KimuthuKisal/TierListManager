@@ -13,6 +13,7 @@ public class ItemDto {
     private boolean isActive;
 
     public ItemDto(Long id, String itemName, String description, String image, Long category, Long tireId, JSONArray metaData, boolean isActive) {
+        this.id = id;
         this.itemName = itemName;
         this.description = description;
         this.image = image;

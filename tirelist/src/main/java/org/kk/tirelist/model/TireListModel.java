@@ -20,8 +20,7 @@ public class TireListModel {
     @NotBlank
     @Column(name = "description")
     private String description;
-    @Column(name = "created_by", 
-    nullable = false)
+    @Column(name = "created_by", nullable = false)
     private Long createdBy;
     @Column(name = "created_on", nullable = false)
     private LocalDateTime createdOn;
@@ -37,15 +36,13 @@ public class TireListModel {
         @JsonProperty("tireName") String tireName, 
         @JsonProperty("description") String description, 
         @JsonProperty("createdBy") Long createdBy, 
-        @JsonProperty("createdOn") LocalDateTime createdOn, 
-        @JsonProperty("updatedOn") LocalDateTime updatedOn, 
+        @JsonProperty("createdOn") LocalDateTime createdOn,
         @JsonProperty("visibility") int visibility
     ) {
         this.tireName = tireName;
         this.description = description;
         this.createdBy = createdBy;
         this.createdOn = createdOn;
-        this.updatedOn = updatedOn;
         this.visibility = visibility;
     }
 

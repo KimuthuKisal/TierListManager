@@ -22,7 +22,7 @@ public class CategoryModel {
 
     public CategoryModel(
         @JsonProperty("categoryName") String categoryName,
-        @JsonProperty("categoryName") boolean activeFlag
+        @JsonProperty("activeFlag") boolean activeFlag
     ) {
         this.categoryName = categoryName;
         this.activeFlag = activeFlag;

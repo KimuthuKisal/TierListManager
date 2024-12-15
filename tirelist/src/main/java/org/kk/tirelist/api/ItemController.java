@@ -4,6 +4,7 @@ import org.kk.tirelist.dto.Category.CategoryDto;
 import org.kk.tirelist.dto.Category.CreateCategoryDto;
 import org.kk.tirelist.dto.Item.CreateItemDto;
 import org.kk.tirelist.dto.Item.ItemDto;
+import org.kk.tirelist.model.ItemModel;
 import org.kk.tirelist.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,14 +55,14 @@ public class ItemController {
         ItemDto itemDto = itemService.updateItem(iid, updatedItemDto);
         return ResponseEntity.ok(itemDto);
     }
-    @PutMapping("{iid}/activate")
+    @PutMapping("activate/{iid}")
     public ResponseEntity<String> activateItem(@PathVariable("iid") Long iid) {
         itemService.ReActiveItem(iid);
         return ResponseEntity.ok("Item Reactivated");
     }
-    @PutMapping("{iid}/deactivate")
+    @PutMapping("deactivate/{iid}")
     public ResponseEntity<String> deactivateItem(@PathVariable("iid") Long iid) {
-        // TODO: Check whether the category has been referenced for items
+        // TODO: Check whether the item has been referenced for items
         itemService.DeleteItem(iid);
         return ResponseEntity.ok("Item Deleted");
     }

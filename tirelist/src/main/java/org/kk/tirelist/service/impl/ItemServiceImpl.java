@@ -63,11 +63,13 @@ public class ItemServiceImpl implements ItemService {
     public void DeleteItem(Long iid) {
         ItemModel item = itemRepository.findById(iid).orElseThrow(() -> new ResourceNotFoundException("Item not found with given id " + iid));
         item.setIsActive(false);
+        itemRepository.save(item);
     }
 
     @Override
     public void ReActiveItem(Long iid) {
         ItemModel item = itemRepository.findById(iid).orElseThrow(() -> new ResourceNotFoundException("Item not found with given id " + iid));
         item.setIsActive(true);
+        itemRepository.save(item);
     }
 }
