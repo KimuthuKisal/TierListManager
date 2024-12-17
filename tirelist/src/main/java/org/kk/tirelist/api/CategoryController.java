@@ -32,6 +32,11 @@ public class CategoryController {
         List<CategoryDto> categories = categoryService.getAllCategories();
         return ResponseEntity.ok(categories);
     }
+    @GetMapping("{cid}")
+    public ResponseEntity<CategoryDto> getcategoryById(@PathVariable("cid") Long cid) {
+        CategoryDto category = categoryService.getCategoryById(cid);
+        return ResponseEntity.ok(category);
+    }
     @GetMapping("active")
     public ResponseEntity<List<CategoryDto>> getAllActiveCategories() {
         List<CategoryDto> categories = categoryService.findCategoriesByStatus(true);

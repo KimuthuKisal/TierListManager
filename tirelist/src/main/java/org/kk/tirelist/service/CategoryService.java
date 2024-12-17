@@ -6,6 +6,7 @@ import org.kk.tirelist.dto.Category.CreateCategoryDto;
 
 public interface CategoryService {
     List<CategoryDto> getAllCategories();
+    CategoryDto getCategoryById(Long cid);
     List<CategoryDto> findCategoriesByStatus(boolean isActive);
     CategoryDto createCategory(CreateCategoryDto createcategoryDto);
     CategoryDto updateCategory(Long cid, CategoryDto categoryDto);

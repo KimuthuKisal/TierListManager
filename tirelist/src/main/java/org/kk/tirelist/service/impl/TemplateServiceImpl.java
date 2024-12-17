@@ -24,10 +24,12 @@ import java.util.stream.Collectors;
 public class TemplateServiceImpl implements TemplateService {
     private TemplateRepository templateRepository;
     private ItemRepository itemRepository;
+    private ItemMapper itemMapper;
 
-    public TemplateServiceImpl(TemplateRepository templateRepository, ItemRepository itemRepository) {
+    public TemplateServiceImpl(TemplateRepository templateRepository, ItemRepository itemRepository, ItemMapper itemMapper) {
         this.templateRepository = templateRepository;
         this.itemRepository = itemRepository;
+        this.itemMapper = itemMapper;
     }
 
     @Override
@@ -43,7 +45,7 @@ public class TemplateServiceImpl implements TemplateService {
 
         List<ItemModel> items = itemRepository.findAllById(new ArrayList<>(allItemIds));
         List<ItemDto> itemDtos = items.stream()
-                .map(ItemMapper::mapItemToItemDto)
+                .map(itemMapper::mapItemToItemDto)
                 .toList();
 
         List<TemplateDto> templateDtos = templates.stream()
@@ -64,7 +66,7 @@ public class TemplateServiceImpl implements TemplateService {
         TemplateModel template = templateRepository.findById(tid).orElseThrow( ()-> new ResourceNotFoundException("Template not found with given id " + tid));
         List<Long> templateItems = template.getItemList();
         List<ItemModel> items = itemRepository.findAllById(templateItems);
-        List<ItemDto> itemDtos = items.stream().map(ItemMapper::mapItemToItemDto).collect(Collectors.toList());
+        List<ItemDto> itemDtos = items.stream().map(itemMapper::mapItemToItemDto).collect(Collectors.toList());
         return TemplateMapper.mapTemplateToTemplateDto(template, itemDtos);
     }
 
@@ -74,7 +76,7 @@ public class TemplateServiceImpl implements TemplateService {
         TemplateModel savedTemplate = templateRepository.save(template);
         List<Long> templateItems = savedTemplate.getItemList();
         List<ItemModel> items = itemRepository.findAllById(templateItems);
-        List<ItemDto> itemDtos = items.stream().map(ItemMapper::mapItemToItemDto).toList();
+        List<ItemDto> itemDtos = items.stream().map(itemMapper::mapItemToItemDto).toList();
         return TemplateMapper.mapTemplateToTemplateDto(savedTemplate, itemDtos);
     }
 
@@ -86,7 +88,7 @@ public class TemplateServiceImpl implements TemplateService {
         TemplateModel updatedTemplate = templateRepository.save(template);
         List<Long> templateItems = template.getItemList();
         List<ItemModel> items = itemRepository.findAllById(templateItems);
-        List<ItemDto> itemDtos = items.stream().map(ItemMapper::mapItemToItemDto).toList();
+        List<ItemDto> itemDtos = items.stream().map(itemMapper::mapItemToItemDto).toList();
         return TemplateMapper.mapTemplateToTemplateDto(updatedTemplate, itemDtos);
     }
 
@@ -104,7 +106,7 @@ public class TemplateServiceImpl implements TemplateService {
         templateRepository.save(template);
         List<Long> templateItems = template.getItemList();
         List<ItemModel> items = itemRepository.findAllById(templateItems);
-        List<ItemDto> itemDtos = items.stream().map(ItemMapper::mapItemToItemDto).collect(Collectors.toList());
+        List<ItemDto> itemDtos = items.stream().map(itemMapper::mapItemToItemDto).collect(Collectors.toList());
         return TemplateMapper.mapTemplateToTemplateDto(template, itemDtos);
     }
 
@@ -115,7 +117,7 @@ public class TemplateServiceImpl implements TemplateService {
         templateRepository.save(template);
         List<Long> templateItems = template.getItemList();
         List<ItemModel> items = itemRepository.findAllById(templateItems);
-        List<ItemDto> itemDtos = items.stream().map(ItemMapper::mapItemToItemDto).collect(Collectors.toList());
+        List<ItemDto> itemDtos = items.stream().map(itemMapper::mapItemToItemDto).collect(Collectors.toList());
         return TemplateMapper.mapTemplateToTemplateDto(template, itemDtos);
     }
 }

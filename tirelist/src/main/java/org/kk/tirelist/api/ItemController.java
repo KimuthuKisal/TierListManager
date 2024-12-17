@@ -4,6 +4,7 @@ import org.kk.tirelist.dto.Category.CategoryDto;
 import org.kk.tirelist.dto.Category.CreateCategoryDto;
 import org.kk.tirelist.dto.Item.CreateItemDto;
 import org.kk.tirelist.dto.Item.ItemDto;
+import org.kk.tirelist.dto.Item.UpdateItemDto;
 import org.kk.tirelist.model.ItemModel;
 import org.kk.tirelist.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,7 @@ public class ItemController {
         return ResponseEntity.ok(items);
     }
     @PutMapping("{iid}")
-    public ResponseEntity<ItemDto> updateItem(@PathVariable("iid") Long iid, @RequestBody ItemDto updatedItemDto) {
+    public ResponseEntity<ItemDto> updateItem(@PathVariable("iid") Long iid, @RequestBody UpdateItemDto updatedItemDto) {
         ItemDto itemDto = itemService.updateItem(iid, updatedItemDto);
         return ResponseEntity.ok(itemDto);
     }
