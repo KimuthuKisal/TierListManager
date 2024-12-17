@@ -35,6 +35,15 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
+//                        .requestMatchers("/api/v1/user").permitAll()
+//                        .requestMatchers("/api/v1/user/register").permitAll()
+//                        .requestMatchers("/api/v1/user/login").permitAll()
+//                        .requestMatchers("/api/v1/category").permitAll()
+//                        .requestMatchers("/api/v1/category/**").permitAll()
+//                        .requestMatchers("/api/v1/item").permitAll()
+//                        .requestMatchers("/api/v1/item/**").permitAll()
+//                        .requestMatchers("/api/v1/template/**").permitAll()
+
                     .requestMatchers(HttpMethod.GET, "/api/v1/user").permitAll()
                     .requestMatchers(HttpMethod.POST, "/api/v1/user").permitAll()
                     .requestMatchers(HttpMethod.PUT, "/api/v1/user").permitAll()
@@ -67,9 +76,18 @@ public class SecurityConfig {
                     .requestMatchers(HttpMethod.POST, "/api/v1/item/**").permitAll()
                     .requestMatchers(HttpMethod.PUT, "/api/v1/item/**").permitAll()
                     .requestMatchers(HttpMethod.DELETE, "/api/v1/item/**").permitAll()
-                    .anyRequest().authenticated()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/template").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/v1/template").permitAll()
+                    .requestMatchers(HttpMethod.PUT, "/api/v1/template").permitAll()
+                    .requestMatchers(HttpMethod.DELETE, "/api/v1/template").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/template/**").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/v1/template/**").permitAll()
+                    .requestMatchers(HttpMethod.PUT, "/api/v1/template/**").permitAll()
+                    .requestMatchers(HttpMethod.DELETE, "/api/v1/template/**").permitAll()
+
+                    .anyRequest().permitAll()
                 )
-//                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();
     }

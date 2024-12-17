@@ -15,8 +15,10 @@ public class TireMapper {
             tireListModel.getCreatedBy(),
             tireListModel.getCreatedOn(),
             tireListModel.getUpdatedOn(),
-            tireListModel.getVisibility()
-        );
+            tireListModel.getVisibility(),
+            tireListModel.getRowCount(),
+            tireListModel.getRowCapacity(),
+            tireListModel.getHolderCapacity());
     }
 
     public static TireListModel mapCreateTireDtoToTire(CreateTireDto createTireDto) {
@@ -25,7 +27,13 @@ public class TireMapper {
             createTireDto.getDescription(),
             createTireDto.getCreatedBy(),
             LocalDateTime.now(),
-            createTireDto.getVisibility()
-        );
+            createTireDto.getVisibility(),
+            createTireDto.getRowCount(),
+            createTireDto.getRowCapacity(),
+            createTireDto.getHolderCapacity());
     }
+
+    // tier with user and items
+
+    // tire with user, items and votes and comments
 }

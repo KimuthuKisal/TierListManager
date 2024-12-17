@@ -20,7 +20,7 @@ public class VoteModel {
     @Column(name = "user_id", nullable=false)
     private Long userId;
     @Column(name = "value", nullable=false)
-    private int value;
+    private boolean value;  // true-like, false-unlike
     @Column(name="created_on", nullable=false)
     private LocalDateTime createdOn;
 
@@ -31,7 +31,7 @@ public class VoteModel {
         @JsonProperty("itemId") Long itemId, 
         @JsonProperty("tireId") Long tireId, 
         @JsonProperty("userId") Long userId, 
-        @JsonProperty("value") int value, 
+        @JsonProperty("value") boolean value, 
         @JsonProperty("createdOn") LocalDateTime createdOn
     ) {
         this.itemId = itemId;
@@ -45,13 +45,13 @@ public class VoteModel {
     public Long getItemId() { return itemId; }
     public Long getTireId() { return tireId; }
     public Long getUserId() { return userId; }
-    public int getValue() { return value; }
+    public boolean getValue() { return value; }
     public LocalDateTime getCreatedOn() { return createdOn; }
     
     public void setId(Long id) { this.id = id; }
     public void setItemId(Long itemId) { this.itemId = itemId; }
     public void setTireId(Long tireId) { this.tireId = tireId; }
     public void setUserId(Long userId) { this.userId = userId; }
-    public void setValue(int value) { this.value = value; }
+    public void setValue(boolean value) { this.value = value; }
     public void setCreatedOn(LocalDateTime createdOn) { this.createdOn = createdOn; }
 }

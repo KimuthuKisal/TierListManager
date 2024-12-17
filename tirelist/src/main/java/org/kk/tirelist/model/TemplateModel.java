@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -47,6 +48,9 @@ public class TemplateModel {
 
     // Add item to item list
     public void addItem(Long item) {
+        if (itemList == null) { // Safety check
+            itemList = new ArrayList<>();
+        }
         if (!this.itemList.contains(item)) {
             this.itemList.add(item);
         }

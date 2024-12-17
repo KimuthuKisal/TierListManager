@@ -27,6 +27,12 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public ItemDto getItemById(Long iid) {
+        ItemModel item = itemRepository.findById(iid).orElseThrow( ()-> new ResourceNotFoundException("Item not found with given id " + iid));
+        return ItemMapper.mapItemToItemDto(item);
+    }
+
+    @Override
     public List<ItemDto> findByIsActive(boolean isActive) {
         List<ItemModel> itemsFilteredWithStatus = itemRepository.findByIsActive(isActive);
         return itemsFilteredWithStatus.stream().map(ItemMapper::mapItemToItemDto).collect(Collectors.toList());
@@ -52,7 +58,7 @@ public class ItemServiceImpl implements ItemService {
         item.setDescription(itemDto.getDescription());
         item.setImage(itemDto.getImage());
         item.setCategory(itemDto.getCategory());
-        item.setTireId(itemDto.getTireId());
+//        item.setTireId(itemDto.getTireId());
         item.setMetaData(itemDto.getMetaData());
         item.setIsActive(itemDto.getIsActive());
         ItemModel updatedItem = itemRepository.save(item);

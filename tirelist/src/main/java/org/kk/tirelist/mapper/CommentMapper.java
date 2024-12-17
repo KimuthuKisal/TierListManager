@@ -2,8 +2,8 @@ package org.kk.tirelist.mapper;
 
 import java.time.LocalDateTime;
 
-import org.kk.tirelist.dto.comment.CommentDto;
-import org.kk.tirelist.dto.comment.CreateCommentDto;
+import org.kk.tirelist.dto.Comment.CommentDto;
+import org.kk.tirelist.dto.Comment.CreateCommentDto;
 import org.kk.tirelist.model.CommentModel;
 
 public class CommentMapper {

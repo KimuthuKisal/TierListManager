@@ -1,4 +1,4 @@
-package org.kk.tirelist.dto.comment;
+package org.kk.tirelist.dto.Comment;
 
 import java.time.LocalDateTime;
 

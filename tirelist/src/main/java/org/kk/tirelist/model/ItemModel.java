@@ -26,8 +26,8 @@ public class ItemModel {
     @NotBlank
     @Column(name = "category")
     private Long category;  // 0-Character, 1-Weapon etc..
-    @Column(name = "tier_id")
-    private Long tireId;
+    // @Column(name = "tier_id")
+    // private Long tireId;
     @Column(name = "meta_data")
     private JSONArray metaData;
     @Column(name = "is_active")
@@ -41,7 +41,7 @@ public class ItemModel {
         @JsonProperty("description") String description, 
         @JsonProperty("image") String image, 
         @JsonProperty("category") Long category, 
-        @JsonProperty("tireId") Long tireId,
+        // @JsonProperty("tireId") Long tireId,
         @JsonProperty("metaData") JSONArray metaData,
         @JsonProperty("isActive") boolean isActive
     ) {
@@ -49,7 +49,7 @@ public class ItemModel {
         this.description = description;
         this.image = image;
         this.category = category;
-        this.tireId = tireId;
+        // this.tireId = tireId;
         this.metaData = metaData;
         this.isActive = isActive;
     }
@@ -59,7 +59,7 @@ public class ItemModel {
     public String getDescription() { return description; }
     public String getImage() { return image; }
     public Long getCategory() { return category; }
-    public Long getTireId() { return tireId; }
+    // public Long getTireId() { return tireId; }
     public JSONArray getMetaData() { return metaData; }
     public boolean getIsActive() { return isActive; }
     
@@ -68,7 +68,7 @@ public class ItemModel {
     public void setDescription(String description) { this.description = description; }
     public void setImage(String image) { this.image = image; }
     public void setCategory(Long category) { this.category = category; }
-    public void setTireId(Long tireId) { this.tireId = tireId; }
+    // public void setTireId(Long tireId) { this.tireId = tireId; }
     public void setMetaData(JSONArray metaData) { this.metaData = metaData; }
     public void setIsActive(boolean isActive) { this.isActive = isActive; }
 

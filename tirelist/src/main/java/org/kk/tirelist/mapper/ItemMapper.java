@@ -12,7 +12,7 @@ public class ItemMapper {
                 item.getDescription(),
                 item.getImage(),
                 item.getCategory(),
-                item.getTireId(),
+                // item.getTireId(),
                 item.getMetaData(),
                 item.getIsActive()
         );
@@ -24,7 +24,7 @@ public class ItemMapper {
                 createItemDto.getDescription(),
                 createItemDto.getImage(),
                 createItemDto.getCategory(),
-                createItemDto.getTireId(),
+                // createItemDto.getTireId(),
                 createItemDto.getMetaData(),
                 createItemDto.getIsActive());
     }

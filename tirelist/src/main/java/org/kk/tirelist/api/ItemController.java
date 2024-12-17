@@ -35,6 +35,11 @@ public class ItemController {
         List<ItemDto> items = itemService.getAllItems();
         return ResponseEntity.ok(items);
     }
+    @GetMapping("{iid}")
+    public ResponseEntity<ItemDto> getItemById(@PathVariable("iid") Long iid) {
+        ItemDto item = itemService.getItemById(iid);
+        return ResponseEntity.ok(item);
+    }
     @GetMapping("active")
     public ResponseEntity<List<ItemDto>> getAllActiveItems() {
         List<ItemDto> items = itemService.findByIsActive(true);

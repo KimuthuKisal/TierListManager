@@ -2,9 +2,6 @@ package org.kk.tirelist.dto.tire;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.validation.constraints.NotBlank;
-
 public class TireDto {
     private Long id;
     private String tireName;
@@ -12,12 +9,15 @@ public class TireDto {
     private Long createdBy;
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
-    private int visibility;
+    private boolean visibility;
+    private int rowCount;
+    private int rowCapacity;
+    private int holderCapacity;
 
     public TireDto() {
     }
 
-    public TireDto(Long id, String tireName, String description, Long createdBy, LocalDateTime createdOn, LocalDateTime updatedOn, int visibility) {
+    public TireDto(Long id, String tireName, String description, Long createdBy, LocalDateTime createdOn, LocalDateTime updatedOn, boolean visibility, int rowCount, int rowCapacity, int holderCapacity) {
         this.id = id;
         this.tireName = tireName;
         this.description = description;
@@ -25,6 +25,9 @@ public class TireDto {
         this.createdOn = createdOn;
         this.updatedOn = updatedOn;
         this.visibility = visibility;
+        this.rowCount = rowCount;
+        this.rowCapacity = rowCapacity;
+        this.holderCapacity = holderCapacity;
     }
 
     public Long getId() { return id; }
@@ -33,7 +36,10 @@ public class TireDto {
     public Long getCreatedBy() { return createdBy; }
     public LocalDateTime getCreatedOn() { return createdOn; }
     public LocalDateTime getUpdatedOn() { return updatedOn; }
-    public int getVisibility() { return visibility; }
+    public boolean getVisibility() { return visibility; }
+    public int getRowCount() { return rowCount; }
+    public int getRowCapacity() { return rowCapacity; }
+    public int getHolderCapacity() { return holderCapacity; }
     
     public void setId(Long id) { this.id = id; }
     public void setTireName(String tireName) { this.tireName = tireName; }
@@ -41,5 +47,8 @@ public class TireDto {
     public void setCreatedBy(Long createdBy) { this.createdBy = createdBy; }
     public void setCreatedOn(LocalDateTime createdOn) { this.createdOn = createdOn; }
     public void setUpdatedOn(LocalDateTime updatedOn) { this.updatedOn = updatedOn; }
-    public void setVisibility(int visibility) { this.visibility = visibility; }
+    public void setVisibility(boolean visibility) { this.visibility = visibility; }
+    public void setRowCount(int rowCount) { this.rowCount = rowCount; }
+    public void setRowCapacity(int rowCapacity) { this.rowCapacity = rowCapacity; }
+    public void setHolderCapacity(int holderCapacity) { this.holderCapacity = holderCapacity; }
 }
