@@ -1,6 +1,7 @@
 package org.kk.tirelist.dto.tire;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class TireDto {
     private Long id;
@@ -13,11 +14,12 @@ public class TireDto {
     private int rowCount;
     private int rowCapacity;
     private int holderCapacity;
+    private List<TireRowDto> rows;
 
     public TireDto() {
     }
 
-    public TireDto(Long id, String tireName, String description, Long createdBy, LocalDateTime createdOn, LocalDateTime updatedOn, boolean visibility, int rowCount, int rowCapacity, int holderCapacity) {
+    public TireDto(Long id, String tireName, String description, Long createdBy, LocalDateTime createdOn, LocalDateTime updatedOn, boolean visibility, int rowCount, int rowCapacity, int holderCapacity, List<TireRowDto> rows) {
         this.id = id;
         this.tireName = tireName;
         this.description = description;
@@ -28,6 +30,7 @@ public class TireDto {
         this.rowCount = rowCount;
         this.rowCapacity = rowCapacity;
         this.holderCapacity = holderCapacity;
+        this.rows = rows;
     }
 
     public Long getId() { return id; }
@@ -40,7 +43,8 @@ public class TireDto {
     public int getRowCount() { return rowCount; }
     public int getRowCapacity() { return rowCapacity; }
     public int getHolderCapacity() { return holderCapacity; }
-    
+    public List<TireRowDto> getRows() { return rows; }
+
     public void setId(Long id) { this.id = id; }
     public void setTireName(String tireName) { this.tireName = tireName; }
     public void setDescription(String description) { this.description = description; }
@@ -51,4 +55,5 @@ public class TireDto {
     public void setRowCount(int rowCount) { this.rowCount = rowCount; }
     public void setRowCapacity(int rowCapacity) { this.rowCapacity = rowCapacity; }
     public void setHolderCapacity(int holderCapacity) { this.holderCapacity = holderCapacity; }
+    public void setRows(List<TireRowDto> rows) { this.rows = rows; }
 }

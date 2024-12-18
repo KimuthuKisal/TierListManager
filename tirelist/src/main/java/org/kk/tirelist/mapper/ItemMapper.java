@@ -22,26 +22,26 @@ public class ItemMapper {
         Long categoryId = item.getCategory();
         CategoryDto categoryDto = getCategoryDto(categoryId);
         return new ItemDto(
-                item.getId(),
-                item.getItemName(),
-                item.getDescription(),
-                item.getImage(),
-                categoryDto,
-                // item.getTireId(),
-                item.getMetaData(),
-                item.getIsActive()
+            item.getId(),
+            item.getItemName(),
+            item.getDescription(),
+            item.getImage(),
+            categoryDto,
+            // item.getTireId(),
+            item.getMetaData(),
+            item.getIsActive()
         );
     }
 
     public static ItemModel mapCreateItemDtoToItem(CreateItemDto createItemDto) {
         return new ItemModel(
-                createItemDto.getItemName(),
-                createItemDto.getDescription(),
-                createItemDto.getImage(),
-                createItemDto.getCategory(),
-                // createItemDto.getTireId(),
-                createItemDto.getMetaData(),
-                createItemDto.getIsActive());
+            createItemDto.getItemName(),
+            createItemDto.getDescription(),
+            createItemDto.getImage(),
+            createItemDto.getCategory(),
+            // createItemDto.getTireId(),
+            createItemDto.getMetaData(),
+            createItemDto.getIsActive());
     }
 }
 

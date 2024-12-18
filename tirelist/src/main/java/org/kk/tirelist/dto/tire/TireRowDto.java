@@ -1,41 +1,34 @@
-package org.kk.tirelist.model;
+package org.kk.tirelist.dto.tire;
 
-import jakarta.persistence.*;
+import java.util.List;
 
-@Entity
-@Table(name="tirerows")
-public class TireRowModel {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class TireRowDto {
     private Long id;
-    @Column(name = "tire_id")
     private Long tireId;
-    @Column(name = "row_number")
     private int rowNumber;
-    @Column(name = "position")
     private int position;
+    private List<TireRowItemDto> items;
 
-    public TireRowModel() {
+    public TireRowDto() {
     }
-    public TireRowModel(Long tireId, int rowNumber, int position) {
+
+    public TireRowDto(Long id, Long tireId, int rowNumber, int position, List<TireRowItemDto> items) {
+        this.id = id;
         this.tireId = tireId;
         this.rowNumber = rowNumber;
         this.position = position;
+        this.items = items;
     }
-//    public TireRowModel(Long id, Long tireId, int rowNumber, int position) {
-//        this.id = id;
-//        this.tireId = tireId;
-//        this.rowNumber = rowNumber;
-//        this.position = position;
-//    }
+
     public Long getId() { return id; }
     public Long getTireId() { return tireId; }
     public int getRowNumber() { return rowNumber; }
     public int getPosition() { return position; }
+    public List<TireRowItemDto> getItems() { return items; }
 
     public void setId(Long id) { this.id = id; }
     public void setTireId(Long tireId) { this.tireId = tireId; }
     public void setRowNumber(int rowNumber) { this.rowNumber = rowNumber; }
     public void setPosition(int position) { this.position = position; }
+    public void setItems(List<TireRowItemDto> items) { this.items = items; }
 }

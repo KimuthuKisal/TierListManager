@@ -42,9 +42,11 @@ public class TireListModel {
             @JsonProperty("tireName") String tireName,
             @JsonProperty("description") String description,
             @JsonProperty("createdBy") Long createdBy,
-            @JsonProperty("createdOn") LocalDateTime createdOn,
+            LocalDateTime createdOn,
             @JsonProperty("visibility") boolean visibility,
-            int rowCount, int rowCapacity, int holderCapacity) {
+            @JsonProperty("rowCount") int rowCount,
+            @JsonProperty("rowCapacity") int rowCapacity, 
+            @JsonProperty("holderCapacity") int holderCapacity) {
         this.tireName = tireName;
         this.description = description;
         this.createdBy = createdBy;
