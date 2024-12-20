@@ -2,12 +2,14 @@ package org.kk.tirelist.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.kk.tirelist.dto.Item.ItemDto;
+import org.kk.tirelist.dto.UserModel.UserDto;
 import org.kk.tirelist.dto.tire.*;
 import org.kk.tirelist.mapper.ItemMapper;
 import org.kk.tirelist.mapper.TireMapper;
 import org.kk.tirelist.model.*;
 import org.kk.tirelist.repository.*;
 import org.kk.tirelist.service.TireService;
+import org.kk.tirelist.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,9 +24,10 @@ public class TireServiceImpl implements TireService {
     private final TireHolderRepository tireHolderRepository;
     private final ItemRepository itemRepository;
     private final ItemMapper itemMapper;
+    private final UserService userService;
 //    private final TireMapper tireMapper;
 
-    public TireServiceImpl(TireRepository tireRepository, TireRowRepository tireRowRepository, TireRowItemRepository tireRowItemRepository, TireHolderRepository tireHolderRepository, ItemRepository itemRepository, ItemMapper itemMapper) {
+    public TireServiceImpl(TireRepository tireRepository, TireRowRepository tireRowRepository, TireRowItemRepository tireRowItemRepository, TireHolderRepository tireHolderRepository, ItemRepository itemRepository, ItemMapper itemMapper, UserService userService) {
         this.tireRepository = tireRepository;
         this.tireRowRepository = tireRowRepository;
 //        this.tireMapper = tireMapper;
@@ -32,6 +35,7 @@ public class TireServiceImpl implements TireService {
         this.tireHolderRepository = tireHolderRepository;
         this.itemRepository = itemRepository;
         this.itemMapper = itemMapper;
+        this.userService = userService;
     }
 
     @Override
@@ -113,7 +117,8 @@ public class TireServiceImpl implements TireService {
                             .filter(holderItem -> holderItem.getTireId().equals(tire.getId()))
                             .collect(Collectors.toList());
                     // Map tire to DTO with filtered rows and holders
-                    return TireMapper.mapTireToTireDto(tire, filteredRows, filteredHolders);
+                    UserDto createdUser = userService.getUserById(tire.getCreatedBy());
+                    return TireMapper.mapTireToTireDto(tire, filteredRows, filteredHolders, createdUser);
                 })
                 .collect(Collectors.toList());
     }
@@ -163,8 +168,8 @@ public class TireServiceImpl implements TireService {
                     return new TireHolderDto(holder.getId(), holder.getTireId(), itemDto);
                 })
                 .collect(Collectors.toList());
-
-        return TireMapper.mapTireToTireDto(tire, rowDtos, holderItemDtos);
+        UserDto createdUser = userService.getUserById(tire.getCreatedBy());
+        return TireMapper.mapTireToTireDto(tire, rowDtos, holderItemDtos, createdUser);
     }
 
 

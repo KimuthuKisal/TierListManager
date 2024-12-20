@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.kk.tirelist.dto.Item.ItemDto;
+import org.kk.tirelist.dto.UserModel.UserDto;
 import org.kk.tirelist.dto.tire.*;
 import org.kk.tirelist.model.ItemModel;
 import org.kk.tirelist.model.TireHolderModel;
@@ -12,12 +13,12 @@ import org.kk.tirelist.model.TireRowItemModel;
 import org.kk.tirelist.model.TireRowModel;
 
 public class TireMapper {
-    public static TireDto mapTireToTireDto(TireListModel tireListModel, List<TireRowDto> rows, List<TireHolderDto> holderItems) {
+    public static TireDto mapTireToTireDto(TireListModel tireListModel, List<TireRowDto> rows, List<TireHolderDto> holderItems, UserDto createdUser) {
         return new TireDto(
             tireListModel.getId(),
             tireListModel.getTireName(),
             tireListModel.getDescription(),
-            tireListModel.getCreatedBy(),
+            createdUser,
             tireListModel.getCreatedOn(),
             tireListModel.getUpdatedOn(),
             tireListModel.getVisibility(),
