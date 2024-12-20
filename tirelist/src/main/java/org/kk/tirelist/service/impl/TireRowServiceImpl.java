@@ -8,8 +8,5 @@ import java.util.List;
 
 @Service
 public class TireRowServiceImpl implements TireRowService {
-    @Override
-    public List<TireRowDto> getRowsById(Long tid) {
-        return null;
-    }
+    
 }

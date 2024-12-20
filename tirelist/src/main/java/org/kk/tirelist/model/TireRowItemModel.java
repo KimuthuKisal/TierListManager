@@ -19,9 +19,9 @@ public class TireRowItemModel {
     public TireRowItemModel() {
     }
 
-    public TireRowItemModel(Long itemId) {
+    public TireRowItemModel(Long rowId, Long itemId) {
         // this.tireId = tireId;
-        // this.rowNumber = rowNumber;
+        this.rowId = rowId;
         this.itemId = itemId;
     }
     public Long getId() { return id; }

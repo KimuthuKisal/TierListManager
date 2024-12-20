@@ -30,4 +30,29 @@ public class TireListController {
         List<TireDto> tires = tireService.getAllTires();
         return ResponseEntity.ok(tires);
     }
+    @GetMapping("{tid}")
+    public ResponseEntity<TireDto> getTireById(@PathVariable("tid") Long tid) {
+        TireDto tire = tireService.getTireById(tid);
+        return ResponseEntity.ok(tire);
+    }
+    @PostMapping("row/{rid}/{iid}")
+    public ResponseEntity<TireDto> addItemToRow(@PathVariable("rid") Long rid, @PathVariable("iid") Long iid) {
+        TireDto tire = tireService.addItemToRow(rid, iid);
+        return ResponseEntity.ok(tire);
+    }
+    @DeleteMapping("row/{rid}/{iid}")
+    public ResponseEntity<TireDto> removeItemToRow(@PathVariable("rid") Long rid, @PathVariable("iid") Long iid) {
+        TireDto tire = tireService.removeItemFromRow(rid, iid);
+        return ResponseEntity.ok(tire);
+    }
+    @PostMapping("holder/{tid}/{iid}")
+    public ResponseEntity<TireDto> addItemToHolder(@PathVariable("tid") Long tid, @PathVariable("iid") Long iid) {
+        TireDto tire = tireService.addItemToHolder(tid, iid);
+        return ResponseEntity.ok(tire);
+    }
+    @DeleteMapping("holder/{tid}/{iid}")
+    public ResponseEntity<TireDto> removeItemToHolder(@PathVariable("tid") Long tid, @PathVariable("iid") Long iid) {
+        TireDto tire = tireService.removeItemFromHolder(tid, iid);
+        return ResponseEntity.ok(tire);
+    }
 }

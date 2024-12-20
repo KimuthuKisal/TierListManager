@@ -8,4 +8,5 @@ import java.util.Set;
 
 public interface TireRowItemRepository extends JpaRepository<TireRowItemModel, Long> {
     List<TireRowItemModel> findAllByRowIdIn(Set<Long> rowIds);
+    TireRowItemModel findByRowIdAndItemId(Long rid, Long iid);
 }

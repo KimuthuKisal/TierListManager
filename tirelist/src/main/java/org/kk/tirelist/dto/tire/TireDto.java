@@ -15,11 +15,12 @@ public class TireDto {
     private int rowCapacity;
     private int holderCapacity;
     private List<TireRowDto> rows;
+    private List<TireHolderDto> holderItems;
 
     public TireDto() {
     }
 
-    public TireDto(Long id, String tireName, String description, Long createdBy, LocalDateTime createdOn, LocalDateTime updatedOn, boolean visibility, int rowCount, int rowCapacity, int holderCapacity, List<TireRowDto> rows) {
+    public TireDto(Long id, String tireName, String description, Long createdBy, LocalDateTime createdOn, LocalDateTime updatedOn, boolean visibility, int rowCount, int rowCapacity, int holderCapacity, List<TireRowDto> rows, List<TireHolderDto> holderItems) {
         this.id = id;
         this.tireName = tireName;
         this.description = description;
@@ -31,6 +32,7 @@ public class TireDto {
         this.rowCapacity = rowCapacity;
         this.holderCapacity = holderCapacity;
         this.rows = rows;
+        this.holderItems = holderItems;
     }
 
     public Long getId() { return id; }
@@ -44,6 +46,7 @@ public class TireDto {
     public int getRowCapacity() { return rowCapacity; }
     public int getHolderCapacity() { return holderCapacity; }
     public List<TireRowDto> getRows() { return rows; }
+    public List<TireHolderDto> getHolderItems() { return holderItems; }
 
     public void setId(Long id) { this.id = id; }
     public void setTireName(String tireName) { this.tireName = tireName; }
@@ -56,4 +59,5 @@ public class TireDto {
     public void setRowCapacity(int rowCapacity) { this.rowCapacity = rowCapacity; }
     public void setHolderCapacity(int holderCapacity) { this.holderCapacity = holderCapacity; }
     public void setRows(List<TireRowDto> rows) { this.rows = rows; }
+    public void setHolderItems(List<TireHolderDto> holderItems) { this.holderItems = holderItems; }
 }
